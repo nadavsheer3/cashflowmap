@@ -20,7 +20,7 @@ class InsightsController extends Controller
         if(!empty(Cashflow::where('user_id',$user_id)->get())){
             $info['flow'] = Cashflow::where('user_id',$user_id)->get();
         };
-
+//dd($info['flow']);
         return view('insights.index', compact('info'));
         
     }
