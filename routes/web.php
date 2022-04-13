@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CashflowController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +24,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+Route::controller(CashflowController::class)->group(function () {
+    Route::get('/cashflow', 'index');
+    //Route::get('/cashflow', 'create');
+    Route::post('/cashflow', 'store');
+});
