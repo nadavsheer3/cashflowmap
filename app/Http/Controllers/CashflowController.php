@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CashflowFormRequest;
 use App\Models\Cashflow;
+use App\Models\User;
 
 class CashflowController extends Controller
 {
@@ -15,7 +17,8 @@ class CashflowController extends Controller
      */
     public function index()
     {
-        $info = Cashflow::all();
+        $user_id = Auth::id();
+        $info = Cashflow::where('user_id',$user_id)->get();
         return view('cashflow.index', compact('info'));
     }
 
@@ -38,6 +41,7 @@ class CashflowController extends Controller
     public function store(CashflowFormRequest $request)
     {
         $data = $request->validated();
+        $data['user_id'] = auth()->id();
 
         $input = Cashflow::create($data);
         return redirect('/cashflow')->with('message','Input inserted!');

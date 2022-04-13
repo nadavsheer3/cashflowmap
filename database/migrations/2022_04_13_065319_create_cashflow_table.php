@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('name');
             $table->integer('amount');
             $table->timestamps();
+
+            $table->foreignId('user_id')->constrained('users');
         });
     }
 

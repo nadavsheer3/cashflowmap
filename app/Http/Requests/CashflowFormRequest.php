@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+
 class CashflowFormRequest extends FormRequest
 {
     /**
@@ -23,7 +24,10 @@ class CashflowFormRequest extends FormRequest
      */
     public function rules()
     {
+        
+        //dd(auth()->user()->id);
         return [
+            'user_id' => [auth()->id()],
             'flow' => ['required'],
             'category' => ['required', 'max:25'],
             'name' => ['required', 'max:25'],
