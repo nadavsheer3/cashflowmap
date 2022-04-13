@@ -18,6 +18,11 @@
                     <x-nav-link :href="url('cashflow')" :active="request()->routeIs('cashflow')">
                         {{ __('Cashflow') }}
                     </x-nav-link>
+                    
+                    <x-nav-link :href="url('insights')" :active="request()->routeIs('insights')">
+                        {{ __('Insights') }}
+                    </x-nav-link>
+                    
                 </div>
             </div>
 

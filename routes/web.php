@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CashflowController;
+use App\Http\Controllers\InsightsController;
 
 
 /*
@@ -27,6 +28,9 @@ require __DIR__.'/auth.php';
 
 Route::controller(CashflowController::class)->group(function () {
     Route::get('/cashflow', 'index');
-    //Route::get('/cashflow', 'create');
     Route::post('/cashflow', 'store');
+});
+
+Route::controller(InsightsController::class)->group(function () {
+    Route::get('/insights', 'index');
 });
