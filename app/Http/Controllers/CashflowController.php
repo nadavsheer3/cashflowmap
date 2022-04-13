@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CashflowFormRequest;
+use App\Models\Cashflow;
 
 class CashflowController extends Controller
 {
@@ -13,7 +15,8 @@ class CashflowController extends Controller
      */
     public function index()
     {
-        return view('cashflow.index');
+        $info = Cashflow::all();
+        return view('cashflow.index', compact('info'));
     }
 
     /**
@@ -32,9 +35,12 @@ class CashflowController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CashflowFormRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $input = Cashflow::create($data);
+        return redirect('/cashflow')->with('message','Input inserted!');
     }
 
     /**
