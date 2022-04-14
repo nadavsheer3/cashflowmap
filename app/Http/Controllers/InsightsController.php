@@ -15,12 +15,8 @@ class InsightsController extends Controller
     public function index()
     {
         $user_id = auth()->id();
-        $info['user_id'] = $user_id;
+        $info = Cashflow::where('user_id',$user_id)->get();
         
-        if(!empty(Cashflow::where('user_id',$user_id)->get())){
-            $info['flow'] = Cashflow::where('user_id',$user_id)->get();
-        };
-//dd($info['flow']);
         return view('insights.index', compact('info'));
         
     }
