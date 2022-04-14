@@ -6,6 +6,7 @@
 		</h2>
 	</x-slot>
 
+
 	<div class="py-12">
 		<div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 			<div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -69,6 +70,7 @@
 					<table class="table table-bordered">
 						<thead>
 							<tr>
+								<th>Date</th>
 								<th>Flow</th>
 								<th>Category</th>
 								<th>Name</th>
@@ -78,6 +80,7 @@
 						<tbody>
 							@forelse ($info as $row)
 							<tr>
+								<td>{{ $row->created_at }}</td>
 								<td>{{ $row->flow }}</td>
 								<td>{{ $row->category }}</td>
 								<td>{{ $row->name }}</td>
@@ -89,10 +92,11 @@
 							</tr>
 							@endforelse
 							<tr>
-								<td>Total</td>
-								<td>Income($)</td>
-								<td>Expence(-$)</td>
-								<td>Income-Expence</td>
+								<th></th>
+								<th>Total</th>
+								<th>Income({{ $sum['income'] }}$)</th>
+								<th>Expence(-{{ $sum['expence'] }}$)</th>
+								<th>{{ $sum['income'] - $sum['expence'] }}</th>
 							</tr>
 						</tbody>
 					</table>

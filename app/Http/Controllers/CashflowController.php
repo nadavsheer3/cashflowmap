@@ -19,7 +19,13 @@ class CashflowController extends Controller
     {
         $user_id = Auth::id();
         $info = Cashflow::where('user_id',$user_id)->get();
-        return view('cashflow.index', compact('info'));
+        $sum['income'] = Cashflow::where('user_id',$user_id)->where('flow','income')->sum('amount');
+        $sum['expence'] = Cashflow::where('user_id',$user_id)->where('flow','expence')->sum('amount');
+        
+
+
+        //dd($info);
+        return view('cashflow.index', compact('info','sum'));
     }
 
     /**

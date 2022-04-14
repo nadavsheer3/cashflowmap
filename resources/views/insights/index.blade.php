@@ -112,4 +112,5 @@
 		</div>
 		@endforelse
 	</div>
+
 </x-app-layout>
