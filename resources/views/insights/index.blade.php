@@ -33,7 +33,7 @@
 						<thead>
 							<tr>
 								<th>Date</th>
-								<th>Flow</th>
+								
 								
 								<th>Name</th>
 								<th>Amount</th>
@@ -43,8 +43,6 @@
 							@forelse ($i as $m)
 							<tr>
 								<td>{{ $m->created_at }}</td>
-								<td>{{ $m->flow }}</td>
-								
 								<td>{{ $m->name }}</td>
 								<td>{{ $m->amount }}</td>
 							</tr>
@@ -54,11 +52,9 @@
 							</tr>
 							@endforelse
 							<tr>
-								
-								<th>Total</th>
-								<th>Income($)</th>
-								<th>Expence(-$)</th>
 								<th></th>
+								<th>Total</th>
+								<th>{{ $sum_income[$row] }}</th>
 							</tr>
 						</tbody>
 					</table>
@@ -102,8 +98,6 @@
 						<thead>
 							<tr>
 								<th>Date</th>
-								<th>Flow</th>
-								
 								<th>Name</th>
 								<th>Amount</th>
 							</tr>
@@ -112,8 +106,6 @@
 							@forelse ($i as $m)
 							<tr>
 								<td>{{ $m->created_at }}</td>
-								<td>{{ $m->flow }}</td>
-								
 								<td>{{ $m->name }}</td>
 								<td>{{ $m->amount }}</td>
 							</tr>
@@ -123,11 +115,9 @@
 							</tr>
 							@endforelse
 							<tr>
-								
-								<th>Total</th>
-								<th>Income($)</th>
-								<th>Expence(-$)</th>
 								<th></th>
+								<th>Total</th>
+								<th>{{ $sum_expence[$row] }}</th>
 							</tr>
 						</tbody>
 					</table>

@@ -44,7 +44,7 @@
                     <x-slot name="content">
 
                             <x-dropdown-link>metamask</x-dropdown-link>
-                            <x-dropdown-link>terra wallet</x-dropdown-link>
+                            <x-dropdown-link>terra station</x-dropdown-link>
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
