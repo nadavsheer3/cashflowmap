@@ -10,15 +10,15 @@
 		
 		<div class="flex justify-center">
 
-		<div>
+		<div class="py-4">
 			Income
 		
-			
-			<div class="pb-2 max-w-7xl mx-auto sm:px-6 lg:px-8">
+			@forelse ($income as $row => $i)
+			<div class="py-2 max-w-7xl mx-auto sm:px-6 lg:px-8">
 				<div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 					<div class="p-6 bg-white border-b border-gray-200">
 						
-						<h3>category</h3>
+						<h3>{{ $row }}</h3>
 						
 					</div>
 				</div>
@@ -29,14 +29,46 @@
 					<div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 						<div class="p-6 bg-white border-b border-gray-200">
 
-							data
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>Date</th>
+								<th>Flow</th>
+								
+								<th>Name</th>
+								<th>Amount</th>
+							</tr>
+						</thead>
+						<tbody>
+							@forelse ($i as $m)
+							<tr>
+								<td>{{ $m->created_at }}</td>
+								<td>{{ $m->flow }}</td>
+								
+								<td>{{ $m->name }}</td>
+								<td>{{ $m->amount }}</td>
+							</tr>
+							@empty
+							<tr>
+								<td colspan="6">No records Found...</td>
+							</tr>
+							@endforelse
+							<tr>
+								
+								<th>Total</th>
+								<th>Income($)</th>
+								<th>Expence(-$)</th>
+								<th></th>
+							</tr>
+						</tbody>
+					</table>
 
 						</div>
 					</div>
 				</div>
 			</div>
-			
-			<div class="pb-2 max-w-7xl mx-auto sm:px-6 lg:px-8">
+			@empty
+			<div class="py-2 max-w-7xl mx-auto sm:px-6 lg:px-8">
 				<div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 					<div class="p-6 bg-white border-b border-gray-200">
 						
@@ -45,18 +77,17 @@
 					</div>
 				</div>
 			</div>
-			
+			@endforelse
 		</div>
 
-		<div>
+		<div class="py-4">
 			Expences
-			
-			
-			<div class="pb-2 max-w-7xl mx-auto sm:px-6 lg:px-8">
+			@forelse ($expence as $row => $i)
+			<div class="py-2 max-w-7xl mx-auto sm:px-6 lg:px-8">
 				<div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 					<div class="p-6 bg-white border-b border-gray-200">
 						
-						<h3>category</h3>
+						<h3>{{ $row }}</h3>
 						
 					</div>
 				</div>
@@ -67,14 +98,46 @@
 					<div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 						<div class="p-6 bg-white border-b border-gray-200">
 
-							data
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>Date</th>
+								<th>Flow</th>
+								
+								<th>Name</th>
+								<th>Amount</th>
+							</tr>
+						</thead>
+						<tbody>
+							@forelse ($i as $m)
+							<tr>
+								<td>{{ $m->created_at }}</td>
+								<td>{{ $m->flow }}</td>
+								
+								<td>{{ $m->name }}</td>
+								<td>{{ $m->amount }}</td>
+							</tr>
+							@empty
+							<tr>
+								<td colspan="6">No records Found...</td>
+							</tr>
+							@endforelse
+							<tr>
+								
+								<th>Total</th>
+								<th>Income($)</th>
+								<th>Expence(-$)</th>
+								<th></th>
+							</tr>
+						</tbody>
+					</table>
 
 						</div>
 					</div>
 				</div>
 			</div>
-			
-			<div class="pb-2 max-w-7xl mx-auto sm:px-6 lg:px-8">
+			@empty
+			<div class="py-2 max-w-7xl mx-auto sm:px-6 lg:px-8">
 				<div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 					<div class="p-6 bg-white border-b border-gray-200">
 						
@@ -82,8 +145,8 @@
 						
 					</div>
 				</div>
-			</div>			
-			
+			</div>
+			@endforelse
 		</div>
 
 		</div>
@@ -100,17 +163,6 @@
 			</div>
 		</div>
 
-		
-		<div class="pb-2 max-w-7xl mx-auto sm:px-6 lg:px-8">
-			<div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-				<div class="p-6 bg-white border-b border-gray-200">
-					
-					<h3>No records Found...</h3>
-					
-				</div>
-			</div>
-		</div>
-		
 	</div>
 
 </x-app-layout>

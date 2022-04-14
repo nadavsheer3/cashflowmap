@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Cashflow;
+use App\Models\User;
 
 class InsightsController extends Controller
 {
@@ -14,10 +16,20 @@ class InsightsController extends Controller
      */
     public function index()
     {
-        $user_id = auth()->id();
-        $info = Cashflow::where('user_id',$user_id)->get();
+        $user_id = Auth::id();
         
-        return view('insights.index', compact('info'));
+        $income = Cashflow::where('user_id',$user_id)->where('flow', 'income')->get()->groupBy('category');
+        $expence = Cashflow::where('user_id',$user_id)->where('flow', 'expence')->get()->groupBy('category');
+        
+        //$groups['income'] = $income->get()->groupBy('category');
+        //$groups['expence'] = $expence->get()->groupBy('category');
+
+        //dd($groups);
+
+        //$sum['income'] = $income->get()->groupBy('category')->toArray();
+        //$sum['expence'] = $expence->get()->groupBy('category')->toArray();
+
+        return view('insights.index', compact('income', 'expence'));
         
     }
 
