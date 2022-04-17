@@ -43,8 +43,16 @@
 
                     <x-slot name="content">
 
-                            <x-dropdown-link>Metamask</x-dropdown-link>
-                            <x-dropdown-link>Terra Station Wallet</x-dropdown-link>
+                            <x-dropdown-link>
+                                <form action="https://www.paypal.com/donate" method="POST" target="_top">
+                                    @csrf
+                                    <input type="hidden" name="hosted_button_id" value="VLPVVJ4KRHKG6"><br>
+                                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button">
+                                    <img alt="" border="0" src="https://www.paypal.com/en_IL/i/scr/pixel.gif">
+                                </form>
+                            </x-dropdown-link>
+                            <x-dropdown-link onclick="web3Login()">Metamask</x-dropdown-link>
+                            <x-dropdown-link onclick="web3Login()">Terra Station Wallet</x-dropdown-link>
 
                     </x-slot>
                 </x-dropdown>
