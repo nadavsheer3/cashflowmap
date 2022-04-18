@@ -40,6 +40,8 @@ RUN apt-get update \
     && curl --silent -o - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
     && apt-get update \
     && apt-get install -y yarn \
+    && apt install nginx-full \
+    && apt install composer \
     && apt-get install -y mysql-client \
     && apt-get install -y postgresql-client \
     && apt-get -y autoremove \
