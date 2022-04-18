@@ -21,6 +21,12 @@ class InsightsController extends Controller
         $income = Cashflow::where('user_id',$user_id)->where('flow', 'income')->get()->groupBy('category');
         $expence = Cashflow::where('user_id',$user_id)->where('flow', 'expence')->get()->groupBy('category');
         
+        $sum['income'] = Cashflow::where('user_id',$user_id)->where('flow','income')->sum('amount');
+        $sum['expence'] = Cashflow::where('user_id',$user_id)->where('flow','expence')->sum('amount');
+        $sum_income = [];
+        $sum_expence = [];
+
+
         //$groups['income'] = $income->get()->groupBy('category');
         //$groups['expence'] = $expence->get()->groupBy('category');
 
@@ -31,8 +37,8 @@ class InsightsController extends Controller
         foreach ($expence as $key_e => $value_e) {
             $sum_expence[$key_e] = Cashflow::where('user_id',$user_id)->where('flow', 'expence')->where('category', $key_e)->sum('amount');
         };
-//dd($sum_expence);
-        return view('insights.index', compact('income', 'expence', 'sum_income','sum_expence'));
+
+        return view('insights.index', compact('income', 'expence', 'sum', 'sum_income','sum_expence'));
         
     }
 

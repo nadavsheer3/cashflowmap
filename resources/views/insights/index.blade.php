@@ -145,9 +145,15 @@
 			<div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
 				<div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 					<div class="p-6 bg-white border-b border-gray-200">
-
-						Total
-
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>Income: {{ $sum['income'] }}</th>
+									<th>Expence: ({{ $sum['expence'] }})</th>
+									<th>Total: {{ $sum['income'] - $sum['expence'] }}</th>
+								</tr>
+							</thead>
+						</table>
 					</div>
 				</div>
 			</div>
